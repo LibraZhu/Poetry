@@ -1,0 +1,8 @@
+<resources>
+    <style name="AppTheme.Login" parent="AppTheme.White">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="actionMenuTextColor">@color/textBlack</item>
+        <item name="navigationIcon">@drawable/ic_back_light</item>
+    </style>
+</resources>

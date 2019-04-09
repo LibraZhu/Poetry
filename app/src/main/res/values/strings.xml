@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Poetry</string>
+
+    <string name="clear_cache">清除缓存</string>
+    <string name="current_version">当前版本</string>
+    <string name="question">常见问题</string>
+    <string name="about">关于我们</string>
+    <string name="setting">设置</string>
 </resources>

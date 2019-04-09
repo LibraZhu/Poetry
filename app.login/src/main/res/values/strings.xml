@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">app.login</string>
+
+    <string name="input_account">输入您的账号</string>
+    <string name="input_mobile">请输入手机号</string>
+    <string name="input_password">请输入6–16位密码</string>
+    <string name="start_user">开始使用</string>
+    <string name="forgot_password">忘记密码</string>
+    <string name="register">立即注册</string>
+    <string name="get_code">发送验证码</string>
+    <string name="getCodeFormat">%ds后重新获取</string>
+    <string name="confirm_password">确认您的密码</string>
+    <string name="confirm_modify">确认修改</string>
+    <string name="reset">重置</string>
+    <string name="title_login">登录</string>
+    <string name="title_register">注册</string>
+    <string name="title_forgotPassword">忘记密码</string>
+    <string name="toast_please_input_phone">请输入手机号</string>
+    <string name="toast_please_input_password">请输入密码</string>
+    <string name="toast_please_input_old_password">请输入原密码</string>
+    <string name="toast_please_input_new_password">请输入新密码</string>
+    <string name="toast_please_input_validateCode">请输入验证码</string>
+    <string name="toast_please_input_password_not_same">两次密码不一样，请重新输入</string>
+    <string name="toast_agree">请阅读并且同意协议</string>
+    <string name="toast_please_input_phone_error">输入的手机号有误</string>
+    <string name="toast_auto_login_fail">自动登录失败，请重新登录</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="register_protocol">我已阅读并且同意</string>
+    <string name="register_protocol_content">用户注册协议</string>
+    <string name="mobile">手机号码</string>
+    <string name="smscode">验证码</string>
+    <string name="oldPassword">原密码</string>
+    <string name="newPassword">新密码</string>
+    <string name="re_password">重复密码</string>
+</resources>

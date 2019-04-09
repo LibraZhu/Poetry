@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/defaultColor</color>
+    <color name="colorPrimaryDark">@color/defaultColor</color>
+    <color name="colorAccent">@color/defaultColor</color>
+
+    <color name="defaultColor">#1890FF</color>
+    <color name="backgroundColor">#F9F9F9</color>
+    <color name="textBlack">#4A4A4A</color>
+    <color name="textGray">#999999</color>
+    <color name="red">#FF0000</color>
+    <color name="devide">#ececec</color>
+
+    <color name="loginBtnColor">@color/defaultColor</color>
+</resources>

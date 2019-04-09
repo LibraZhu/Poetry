@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.libra.login.xmlmodel.LoginXmlModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_titlebar_center_light" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="34dp"
+            android:orientation="vertical">
+
+            <com.libra.frame.widget.ClearEditText
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_edittext"
+                android:drawableLeft="@drawable/ic_login_phone"
+                android:drawablePadding="10dp"
+                android:hint="@string/input_mobile"
+                android:inputType="phone"
+                android:text="@={vm.account}" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.libra.frame.widget.ClearEditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_edittext"
+                    android:drawableLeft="@drawable/ic_login_code"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/input_code"
+                    android:inputType="number"
+                    android:text="@={vm.code}" />
+
+                <Button
+                    style="@style/TextStyle.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/select_btn"
+                    android:enabled="@{vm.isSendBtnEnable()}"
+                    android:onClick="@{vm.getCodeClick}"
+                    android:text="@{vm.codeText}"
+                    android:textSize="@dimen/textSizeMin" />
+            </FrameLayout>
+
+
+            <com.libra.frame.widget.ClearEditText
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_edittext"
+                android:drawableLeft="@drawable/ic_login_password"
+                android:drawablePadding="10dp"
+                android:hint="@string/input_password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:text="@={vm.password}" />
+
+
+            <com.libra.frame.widget.ClearEditText
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_edittext"
+                android:drawableLeft="@drawable/ic_login_password"
+                android:drawablePadding="10dp"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:text="@={vm.confirmPassword}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <CheckBox
+                style="@style/TextStyle.Gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={vm.agree}"
+                android:paddingLeft="10dp"
+                android:text="@string/register_protocol" />
+
+            <TextView
+                style="@style/TextStyle.Gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:onClick="@{vm.agreeClick}"
+                android:text="@string/register_protocol_content"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+
+        <Button
+            style="@style/TextStyle.Button.Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:onClick="@{vm.registerClick}"
+            android:text="@string/register" />
+
+    </LinearLayout>
+</layout>

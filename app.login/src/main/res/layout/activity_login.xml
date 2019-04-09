@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.libra.login.xmlmodel.LoginXmlModel" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="70dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="84dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.libra.frame.widget.ClearEditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_edittext"
+                    android:drawableLeft="@drawable/ic_login_phone"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/input_mobile"
+                    android:inputType="phone"
+                    android:text="@={vm.account}" />
+
+                <Button
+                    style="@style/TextStyle.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/select_btn_gray"
+                    android:enabled="@{vm.isSendBtnEnable()}"
+                    android:onClick="@{vm.getCodeClick}"
+                    android:text="@{vm.codeText}"
+                    android:textSize="@dimen/textSizeMin"
+                    android:visibility="@{vm.smsLogin?View.VISIBLE:View.GONE}" />
+            </FrameLayout>
+
+            <com.libra.frame.widget.ClearEditText
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_edittext"
+                android:drawableLeft="@drawable/ic_login_password"
+                android:drawablePadding="10dp"
+                android:hint="@string/input_password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:text="@={vm.password}" />
+        </LinearLayout>
+
+        <Button
+            style="@style/TextStyle.Button.Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:onClick="@{vm.loginClick}"
+            android:text="@string/start_user" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                style="@style/TextStyle.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1.0"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{vm.registerClick}"
+                android:text="@string/register" />
+
+            <View
+                style="@style/DevideStyle.V"
+                android:background="@color/textBlack" />
+
+            <TextView
+                style="@style/TextStyle.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{vm.forgotClick}"
+                android:text="@string/forgot_password" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

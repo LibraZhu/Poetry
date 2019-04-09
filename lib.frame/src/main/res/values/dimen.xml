@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeMax">20sp</dimen>
+    <dimen name="textSizeLarge">18sp</dimen>
+    <dimen name="textSizeNor">16sp</dimen>
+    <dimen name="textSizeSmall">14sp</dimen>
+    <dimen name="textSizeMin">12sp</dimen>
+    <dimen name="buttonHeight">48dp</dimen>
+    <dimen name="editTextHeight">48dp</dimen>
+    <dimen name="main_padding_top">0dp</dimen>
+</resources>
