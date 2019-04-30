@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="xmlmodel"
+                type="com.libra.poetry.home.xmlmodel.GroupItemXmlModel"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/avator"
+                    android:onClick="@{xmlmodel.userClick}"/>
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/username"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:layout_toRightOf="@+id/avator"
+                    android:onClick="@{xmlmodel.poetryClick}"
+                    android:text="@{xmlmodel.userName}"
+                    tools:text="小小"/>
+
+            <TextView
+                    style="@style/TextStyle.Gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/select_btn_follow"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/username"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="@{xmlmodel.followClick}"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="5dp"
+                    android:text="@{xmlmodel.follow?@string/follow_done:@string/follow_done}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeMin"
+                    tools:text="+关注"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content"
+                    android:layout_alignLeft="@+id/username"
+                    android:layout_below="@+id/username"
+                    android:layout_marginTop="7dp"
+                    android:onClick="@{xmlmodel.userClick}"
+                    android:text="@{xmlmodel.content}"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/textSizeSmall"
+                    tools:text="时光静好,源于君老!"/>
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/time"
+                    android:layout_alignLeft="@+id/username"
+                    android:layout_below="@+id/content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{xmlmodel.time}"
+                    android:textColor="@color/textGray"
+                    android:textSize="@dimen/textSizeMin"
+                    tools:text="2019-04-24 17:00:00"/>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/time">
+
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:onClick="@{xmlmodel.replyClick}"
+                        android:src="@drawable/ic_comment"/>
+
+                <TextView
+                        style="@style/TextStyle.Gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:onClick="@{xmlmodel.replyClick}"
+                        android:text="@{xmlmodel.reply}"
+                        android:textSize="@dimen/textSizeMin"
+                        tools:text="123"/>
+
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:onClick="@{xmlmodel.likeClick}"
+                        android:src="@{xmlmodel.likeFlag?@drawable/ic_like:@drawable/ic_like_out}"/>
+
+                <TextView
+                        style="@style/TextStyle.Gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:onClick="@{xmlmodel.likeClick}"
+                        android:text="@{xmlmodel.like}"
+                        android:textSize="@dimen/textSizeMin"
+                        tools:text="123"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View style="@style/DevideStyle"/>
+    </LinearLayout>
+</layout>

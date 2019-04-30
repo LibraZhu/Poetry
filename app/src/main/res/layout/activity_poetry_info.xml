@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="xmlmodel"
+                type="com.libra.poetry.poetry.xmlmodel.PoetryInfoXmlModel"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/layout_titlebar_light"/>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:layout_weight="1.0"
+                android:onClick="@{xmlmodel.animClick}">
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:id="@+id/scrollView"
+                    android:layout_marginBottom="56dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginRight="42dp"
+                    android:layout_marginTop="56dp"
+                    android:scrollbars="none">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:onClick="@{xmlmodel.animClick}"
+                        android:orientation="vertical">
+
+                    <TextView
+                            style="@style/TextStyle.Black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="@{xmlmodel.nullClick}"
+                            android:text="@{xmlmodel.title}"
+                            android:textSize="@dimen/textSizeLarge"
+                            android:textStyle="bold"
+                            tools:text="静夜思"/>
+
+                    <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:onClick="@{xmlmodel.nullClick}"
+                            android:text="@{xmlmodel.subTitle}"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/textSizeSmall"
+                            tools:text="唐代"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/content"
+                            android:layout_marginTop="32dp"
+                            android:lineSpacingExtra="16dp"
+                            android:onClick="@{xmlmodel.nullClick}"
+                            android:textColor="@color/textGray"
+                            android:textSize="@dimen/textSizeNor"
+                            tools:text="唐代"/>
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:id="@+id/bottomLayout"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackground"
+                        android:layout_weight="1"
+                        android:onClick="@{xmlmodel.favClick}"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:scaleType="center"
+                        android:src="@{xmlmodel.fav?@drawable/ic_favorites:@drawable/ic_favorites_out}"/>
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackground"
+                        android:layout_weight="1"
+                        android:onClick="@{xmlmodel.commentClick}">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/comment"
+                            android:layout_centerInParent="true"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:src="@drawable/ic_comment"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignRight="@id/comment"
+                            android:layout_marginRight="-5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="@{String.valueOf(xmlmodel.commentSize)}"
+                            android:textColor="@color/red"
+                            android:textSize="9sp"
+                            android:visibility="@{xmlmodel.commentSize>0?View.VISIBLE:View.GONE}"
+                            tools:text="111"/>
+                </RelativeLayout>
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackground"
+                        android:layout_weight="1"
+                        android:onClick="@{xmlmodel.shareClick}"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_share"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="42dp"
+                    android:layout_height="match_parent"
+                    android:background="#04000000"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/rightLayout"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="112dp"
+                    android:layout_marginTop="56dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        style="@style/TextStyle.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_weight="1.0"
+                        android:onClick="@{xmlmodel.contentClick}"
+                        android:text="文"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        style="@style/TextStyle.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_weight="1.0"
+                        android:onClick="@{xmlmodel.remarkClick}"
+                        android:text="注"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        style="@style/TextStyle.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_weight="1.0"
+                        android:onClick="@{xmlmodel.translationClick}"
+                        android:text="译"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        style="@style/TextStyle.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_weight="1.0"
+                        android:onClick="@{xmlmodel.appreciationClick}"
+                        android:text="赏"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        style="@style/TextStyle.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_weight="1.0"
+                        android:onClick="@{xmlmodel.authorClick}"
+                        android:text="作"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

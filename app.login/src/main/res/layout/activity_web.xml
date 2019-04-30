@@ -9,7 +9,7 @@
 
         android:orientation="vertical">
 
-        <include layout="@layout/layout_titlebar_center" />
+        <include layout="@layout/layout_titlebar" />
 
         <LinearLayout
             android:id="@+id/container"

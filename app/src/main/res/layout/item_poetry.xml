@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="xmlmodel"
+                type="com.libra.poetry.home.xmlmodel.PoetryItemXmlModel"/>
+    </data>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{xmlmodel.itemClick}"
+            android:background="?selectableItemBackground"
+            android:gravity="center_horizontal">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_title_left"/>
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:textSize="@dimen/textSizeLarge"
+                    tools:text="asdf"
+                    android:gravity="center"
+                    android:text="@{xmlmodel.title}"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_title_right"/>
+        </LinearLayout>
+
+        <TextView
+                style="@style/TextStyle"
+                android:textSize="@dimen/textSizeSmall"
+                android:textColor="@color/colorAccent"
+                tools:text="唐代"
+                android:text="@{xmlmodel.author}"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/content"
+                android:textSize="@dimen/textSizeNor"
+                android:textColor="@color/textGray"
+                tools:text="唐代"
+                android:lineSpacingExtra="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

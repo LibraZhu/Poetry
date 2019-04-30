@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="xmlmodel"
+                type="com.libra.poetry.home.xmlmodel.UserXmlModel"/>
+    </data>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_head"
+                android:background="?selectableItemBackgroundBorderless"
+                android:onClick="@{xmlmodel.nameClick}"
+                android:layout_marginTop="25dp"
+                android:scaleType="centerCrop"/>
+
+        <TextView
+                style="@style/TextStyle.Black"
+                android:id="@+id/name"
+                android:onClick="@{xmlmodel.nameClick}"
+                android:layout_marginTop="10dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{xmlmodel.name}"
+                tools:text="Libra"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextStyle.Gray"
+                    android:textSize="@dimen/textSizeMin"
+                    android:text="@{xmlmodel.follow}"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="@{xmlmodel.followClick}"
+                    android:background="?selectableItemBackgroundBorderless"
+                    tools:text="关注:111"/>
+
+            <View
+                    style="@style/DevideStyle.V"
+                    android:layout_margin="10dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextStyle.Gray"
+                    android:textSize="@dimen/textSizeMin"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="@{xmlmodel.fansClick}"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@{xmlmodel.fans}"
+                    tools:text="粉丝:111"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_fav"
+                    android:text="@string/fav"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:onClick="@{xmlmodel.favClick}"
+                    android:drawablePadding="6dp"/>
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_friend"
+                    android:text="@string/friend"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:onClick="@{xmlmodel.friendClick}"
+                    android:drawablePadding="6dp"/>
+
+            <TextView
+                    style="@style/TextStyle.Black"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_message"
+                    android:text="@string/message"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:onClick="@{xmlmodel.messageClick}"
+                    android:drawablePadding="6dp"/>
+        </LinearLayout>
+
+        <View style="@style/DevideStyle"/>
+
+        <TextView
+                style="@style/TextStyle.Gray"
+                android:textSize="@dimen/textSizeMin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/history"/>
+    </LinearLayout>
+</layout>

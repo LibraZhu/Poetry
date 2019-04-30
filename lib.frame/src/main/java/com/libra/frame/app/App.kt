@@ -6,6 +6,8 @@ import android.content.Context
 import android.os.Bundle
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 import com.libra.base.BaseApp
 import com.libra.frame.BuildConfig
 import com.libra.frame.api.DataManager
@@ -29,6 +31,10 @@ class App : BaseApp() {
     private val PREFS_FILE = "device_id.xml"
     private val PREFS_DEVICE_ID = "device_id"
     var currentActivity: Activity? = null
+
+
+    @GlideModule
+    class MyAppGlideModule : AppGlideModule()
 
     override fun onCreate() {
         super.onCreate()

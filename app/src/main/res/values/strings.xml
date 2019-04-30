@@ -6,4 +6,30 @@
     <string name="question">常见问题</string>
     <string name="about">关于我们</string>
     <string name="setting">设置</string>
+    <string name="tab_poetry">诗</string>
+    <string name="tab_group">社</string>
+    <string name="tab_me">君</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fav">藏品</string>
+    <string name="friend">诗友</string>
+    <string name="message">讯息</string>
+    <string name="history">足迹</string>
+    <string name="fans">粉丝:%d</string>
+    <string name="follow">关注:%d</string>
+    <string name="logout">退出登录</string>
+    <string name="modify_password">修改密码</string>
+    <string name="suggest">意见反馈</string>
+    <string name="menu_more">更多</string>
+    <string name="input_comment">撰写评论...</string>
+    <string name="send">发送</string>
+    <string name="follow_un">+关注</string>
+    <string name="follow_done">已关注</string>
+    <string name="format_user_poetry">%1$s于《%2$s》中言</string>
+    <string name="read_setting">阅读设置</string>
+    <string name="read_setting_light">亮度调节</string>
+    <string name="read_setting_textStyle">字体样式</string>
+    <string name="read_setting_textSize">字体大小</string>
+    <string name="read_setting_bg">阅读背景</string>
 </resources>

@@ -10,13 +10,13 @@
 
     <style name="AppTheme.Welcome" parent="AppTheme">
         <!--<item name="android:windowIsTranslucent">true</item>-->
-        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.White" parent="AppTheme">
         <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimaryDark">#999999</item>
         <item name="actionMenuTextColor">@color/textBlack</item>
         <item name="navigationIcon">@drawable/ic_back_light</item>
     </style>
@@ -67,6 +67,8 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/devide</item>
     </style>
+
+    <style name="ToolbarStyle.Light" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="ToolbarTextStyle.Light" parent="ToolbarTextStyle">
         <item name="android:textColor">@color/textBlack</item>

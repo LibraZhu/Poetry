@@ -16,7 +16,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_titlebar_center_light" />
+        <include layout="@layout/layout_titlebar_light" />
 
         <LinearLayout
 

@@ -14,8 +14,23 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            tools:ignore="GoogleAppIndexingWarning"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".poetry.PoetryCommentActivity">
+        </activity>
+        <activity
+                android:name=".poetry.PoetryInfoActivity"
+                android:label=""
+                android:launchMode="singleTop"/>
+        <activity
+                android:name=".setting.SettingActivity"
+                android:label="@string/setting"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".home.MainActivity"
+                android:launchMode="singleTask"
+                android:screenOrientation="portrait"/>
         <activity android:name=".welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,9 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".home.MainActivity"
-                  android:launchMode="singleTask"
-                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

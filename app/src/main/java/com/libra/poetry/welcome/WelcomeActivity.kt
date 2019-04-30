@@ -1,7 +1,5 @@
 package com.libra.poetry.welcome
 
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.view.View
@@ -68,17 +66,10 @@ class WelcomeActivity : BaseBindingActivity<com.libra.poetry.databinding.Activit
             MainActivity.start(this)
             finish()
         } else {
-            LoginActivity.start(this)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 0x0001) {
-                MainActivity.start(this)
-                finish()
+            LoginActivity.start(this) {
+                MainActivity.start(it)
+                it.finish()
             }
-        } else {
             finish()
         }
     }

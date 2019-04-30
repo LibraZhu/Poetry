@@ -1,16 +1,18 @@
 package com.libra.login
 
 import android.app.Activity
-import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
 import android.view.View
 import com.libra.base.BaseBindingActivity
 import com.libra.frame.api.Api
-import com.libra.login.xmlmodel.LoginXmlModel
-import com.libra.utils.*
 import com.libra.frame.api.DataManager
 import com.libra.frame.utils.StatusBarLight
+import com.libra.login.xmlmodel.LoginXmlModel
+import com.libra.utils.hideSoftKeyboard
+import com.libra.utils.isMobileNo
+import com.libra.utils.startActivityForResult
+import com.libra.utils.toast
 import io.reactivex.functions.Consumer
 import java.util.*
 
@@ -26,9 +28,9 @@ class RegisterActivity : BaseBindingActivity<com.libra.login.databinding.Activit
         return R.layout.activity_register
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun initToolBar() {
         StatusBarLight.light(window)
-        super.onCreate(savedInstanceState)
+        super.initToolBar()
     }
 
     override fun initIntentData() {
@@ -37,8 +39,10 @@ class RegisterActivity : BaseBindingActivity<com.libra.login.databinding.Activit
     override fun initXmlModel() {
         xmlModel.codeText.set(getString(R.string.get_code))
         xmlModel.registerClick = View.OnClickListener {
-            doRegister(xmlModel.account.get() ?: "", xmlModel.password.get() ?: "",
-                    xmlModel.confirmPassword.get() ?: "", xmlModel.code.get() ?: "")
+            doRegister(
+                xmlModel.account.get() ?: "", xmlModel.password.get() ?: "",
+                xmlModel.confirmPassword.get() ?: "", xmlModel.code.get() ?: ""
+            )
         }
         xmlModel.getCodeClick = View.OnClickListener { doSendCode(xmlModel.account.get() ?: "") }
         xmlModel.agreeClick = View.OnClickListener { doAgree() }
@@ -81,23 +85,25 @@ class RegisterActivity : BaseBindingActivity<com.libra.login.databinding.Activit
         currentFocus?.hideSoftKeyboard()
         showLoadingDialog()
         addObservable(
-                Api.getInstance().register(phone, password, confirmPassword, code)
-                        .success(Consumer { it ->
-                            addObservable(Api.getInstance().login(phone, password)
-                                    .success(Consumer {
-                                        closeLoadingDialog()
-                                        setResult(Activity.RESULT_OK)
-                                        finish()
-                                    }).error(Consumer {
-                                        closeLoadingDialog()
-                                        toast(getString(R.string.toast_auto_login_fail))
-                                        finish()
-                                    }))
-                        })
-                        .error(Consumer { t ->
+            Api.getInstance().register(phone, password, confirmPassword, code)
+                .success(Consumer { it ->
+                    addObservable(Api.getInstance().login(phone, password)
+                        .success(Consumer {
                             closeLoadingDialog()
-                            toast(t?.message)
-                        }))
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        }).error(Consumer {
+                            closeLoadingDialog()
+                            toast(getString(R.string.toast_auto_login_fail))
+                            finish()
+                        })
+                    )
+                })
+                .error(Consumer { t ->
+                    closeLoadingDialog()
+                    toast(t?.message)
+                })
+        )
     }
 
     private fun doSendCode(phone: String) {
@@ -111,17 +117,19 @@ class RegisterActivity : BaseBindingActivity<com.libra.login.databinding.Activit
         }
         showLoadingDialog()
         addObservable(Api.getInstance().getRegisterCode(phone)
-                .success(Consumer {
-                    closeLoadingDialog()
-                    CodeTimer((1 * 60 * 1000).toLong(), 1000).start()
-                }).error(Consumer { t ->
-                    closeLoadingDialog()
-                    toast(t?.message)
-                }))
+            .success(Consumer {
+                closeLoadingDialog()
+                CodeTimer((1 * 60 * 1000).toLong(), 1000).start()
+            }).error(Consumer { t ->
+                closeLoadingDialog()
+                toast(t?.message)
+            })
+        )
     }
 
     internal inner class CodeTimer(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(
-            millisInFuture, countDownInterval) {
+        millisInFuture, countDownInterval
+    ) {
 
 
         override fun onFinish() {
@@ -132,9 +140,13 @@ class RegisterActivity : BaseBindingActivity<com.libra.login.databinding.Activit
 
         override fun onTick(millisUntilFinished: Long) {
             xmlModel.isSendBtnEnable.set(false)
-            xmlModel.codeText.set(String.format(Locale.getDefault(),
+            xmlModel.codeText.set(
+                String.format(
+                    Locale.getDefault(),
                     getString(R.string.getCodeFormat),
-                    millisUntilFinished.toInt() / 1000))
+                    millisUntilFinished.toInt() / 1000
+                )
+            )
         }
     }
 }

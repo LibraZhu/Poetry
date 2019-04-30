@@ -1,8 +1,6 @@
 package com.libra.frame.api
 
-import com.libra.frame.api.data.Config
-import com.libra.frame.api.data.Response
-import com.libra.frame.api.data.User
+import com.libra.frame.api.data.*
 import io.reactivex.Flowable
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -46,4 +44,40 @@ interface ApiService {
     @Headers("Content-Type: application/json;charset=UTF-8")
     @POST("/poetry/user/modify_password")
     fun modifyPassword(@Body params: RequestBody): Flowable<Response<Any>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/recommend")
+    fun recommend(@Body params: RequestBody): Flowable<Response<ArrayList<Poetry>>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/ad/banner")
+    fun banner(@Body params: RequestBody): Flowable<Response<ArrayList<Banner>>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/comment/list")
+    fun commentList(@Body params: RequestBody): Flowable<Response<PageResult<Comment>>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/comment/add")
+    fun commentAdd(@Body params: RequestBody): Flowable<Response<Comment>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/comment/delete")
+    fun commentDelete(@Body params: RequestBody): Flowable<Response<Any>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/favorite/list")
+    fun favList(@Body params: RequestBody): Flowable<Response<PageResult<Favorite>>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/favorite/check")
+    fun favCheck(@Body params: RequestBody): Flowable<Response<Boolean>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/favorite/add")
+    fun favAdd(@Body params: RequestBody): Flowable<Response<Favorite>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/poetry/favorite/delete")
+    fun favDelete(@Body params: RequestBody): Flowable<Response<Any>>
 }

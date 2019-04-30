@@ -75,6 +75,7 @@ dependencies {
     implementation "com.android.support:design:$supportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation project(':lib.frame')
     implementation project(':app.login')
 }

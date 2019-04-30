@@ -4,13 +4,21 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.provider.Settings
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentPagerAdapter
 import com.libra.base.BaseBindingActivity
+import com.libra.base.BaseBindingFragment
+import com.libra.frame.utils.StatusBarLight
+import com.libra.login.LoginActivity
 import com.libra.poetry.R
 import com.libra.utils.startActivity
 import com.libra.utils.toast
 import com.orhanobut.logger.Logger
 import com.tbruyelle.rxpermissions2.RxPermissions
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : BaseBindingActivity<com.libra.poetry.databinding.ActivityMainBinding>() {
     companion object {
@@ -19,8 +27,19 @@ class MainActivity : BaseBindingActivity<com.libra.poetry.databinding.ActivityMa
         }
     }
 
+    private var fragmentList: ArrayList<BaseBindingFragment<*>> = ArrayList()
     override fun getLayoutID(): Int {
         return R.layout.activity_main
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+//        StatusBarLight.light(window)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun initToolBar() {
+        StatusBarLight.lightFullScreen(window)
+        super.initToolBar()
     }
 
     override fun initIntentData() {
@@ -71,5 +90,54 @@ class MainActivity : BaseBindingActivity<com.libra.poetry.databinding.ActivityMa
     }
 
     override fun initXmlModel() {
+    }
+
+    override fun initCustomView() {
+        navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.tab_home -> {
+                    viewpager.currentItem = 0
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.tab_repay -> {
+                    viewpager.currentItem = 1
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.tab_user -> {
+                    viewpager.currentItem = 2
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+            return@setOnNavigationItemSelectedListener false
+        }
+        initFragment()
+    }
+
+    private fun initFragment() {
+        fragmentList.add(PoetryFragment.newInstance())
+        fragmentList.add(GroupFragment.newInstance())
+        fragmentList.add(UserFragment.newInstance())
+        viewpager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
+            override fun getItem(position: Int): Fragment {
+                return fragmentList[position]
+            }
+
+            override fun getCount(): Int {
+                return fragmentList.size
+            }
+        }
+        viewpager.offscreenPageLimit = 3
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 0x0001) {
+                LoginActivity.start(this) {
+                    start(it)
+                    it.finish()
+                }
+                finish()
+            }
+        }
     }
 }

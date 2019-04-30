@@ -6,8 +6,8 @@ package com.libra.frame.api.data
 
 data class User(
     var id: Long = 0, var account: String? = null, var avatar: String? = null,
-    var birthday: Int = 0, var createTime: Int = 0, var email: Int = 0, var ip: Int = 0,
-    var nickname: Int = 0, var phone: Int = 0, var sex: String? = null, var status: String? = null,
-    var token: String? = null, var updateTime: String? = null
+    var birthday: String? = null, var createTime: String? = null, var email: String? = null, var ip: String? = null,
+    var nickname: String? = null, var phone: String? = null, var sex: String? = null, var status: String? = null,
+    var token: String? = null, var updateTime: String? = null, var fans: Int = 0, var follow: Int = 0
 ) {
 }

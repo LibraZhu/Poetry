@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+        <include layout="@layout/layout_titlebar_light"/>
+
+        <View style="@style/DevideStyle"/>
+
+        <com.libra.superrecyclerview.SuperRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"/>
+
+        <View style="@style/DevideStyle"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0fffffff"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+            <EditText
+                    android:id="@+id/inputComment"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:minHeight="48dp"
+                    android:maxHeight="120dp"
+                    android:text=""
+                    android:hint="@string/input_comment"
+                    android:textColor="@color/textBlack"
+                    android:textSize="@dimen/textSizeSmall"/>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:gravity="bottom">
+
+                <TextView
+                        android:id="@+id/send"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/send"
+                        android:background="@drawable/select_btn_comment_more"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

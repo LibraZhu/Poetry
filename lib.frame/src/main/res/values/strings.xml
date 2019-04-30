@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">libra.frame</string>
-    <string name="sAddress">http://192.168.2.26:80</string>
+    <string name="sAddress">http://192.168.2.31:80</string>
 </resources>

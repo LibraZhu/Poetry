@@ -8,9 +8,7 @@ import com.libra.api.ApiObservable
 import com.libra.api.RetrofitBuilder
 import com.libra.frame.Constants
 import com.libra.frame.R
-import com.libra.frame.api.data.Config
-import com.libra.frame.api.data.Response
-import com.libra.frame.api.data.User
+import com.libra.frame.api.data.*
 import com.libra.frame.app.App
 import com.libra.utils.JSONUtils
 import com.libra.utils.MD5
@@ -324,6 +322,18 @@ class Api private constructor() {
     }
 
     /**
+     * 登出
+     */
+    fun logout(): ApiObservable<Any> {
+        val map = TreeMap<String, Any?>()
+        return ApiObservable<Any>().observable(
+            checkSuccess(mApiService.logout(buildJsonParams(map))).map {
+                DataManager.instance.clearToken()
+                return@map true
+            })
+    }
+
+    /**
      * 用户信息
      */
     fun userInfo(): ApiObservable<User> {
@@ -335,6 +345,125 @@ class Api private constructor() {
                 }
                 DataManager.instance.setCurUser(t.data!!)
                 return@map t.data
+            })
+    }
+
+    /**
+     * 今日推荐
+     */
+    fun recommend(): ApiObservable<ArrayList<Poetry>> {
+        val map = TreeMap<String, Any?>()
+        return ApiObservable<ArrayList<Poetry>>().observable(
+            checkSuccess(mApiService.recommend(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = ArrayList()
+                }
+                return@map t.data
+            })
+    }
+
+    fun banner(): ApiObservable<ArrayList<Banner>> {
+        val map = TreeMap<String, Any?>()
+        return ApiObservable<ArrayList<Banner>>().observable(
+            checkSuccess(mApiService.banner(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = ArrayList()
+                }
+                return@map t.data
+            })
+    }
+
+    /**
+     * 评论列表
+     */
+    fun commentList(page: Int, poetryId: Int? = null): ApiObservable<PageResult<Comment>> {
+        val map = TreeMap<String, Any?>()
+        if (poetryId != null) {
+            map["poetryId"] = poetryId
+        }
+        map["pageSize"] = Constants.PageSize
+        map["pageNo"] = page
+        return ApiObservable<PageResult<Comment>>().observable(
+            checkSuccess(mApiService.commentList(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = PageResult()
+                }
+                return@map t.data
+            })
+    }
+
+    /**
+     * 添加评论
+     */
+    fun commentAdd(poetryId: Int, poetryTitle: String, content: String): ApiObservable<Comment> {
+        val map = TreeMap<String, Any?>()
+        map["poetryId"] = poetryId
+        map["poetryTitle"] = poetryTitle
+        map["content"] = content
+        return ApiObservable<Comment>().observable(
+            checkSuccess(mApiService.commentAdd(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = Comment()
+                }
+                return@map t.data
+            })
+    }
+
+    /**
+     * 删除评论
+     */
+    fun commentDelete(commentId: Long): ApiObservable<Any> {
+        val map = TreeMap<String, Any?>()
+        map["commentId"] = commentId
+        return ApiObservable<Any>().observable(
+            checkSuccess(mApiService.commentDelete(buildJsonParams(map))).map { t ->
+                return@map true
+            })
+    }
+
+    fun favList(page: Int): ApiObservable<PageResult<Favorite>> {
+        val map = TreeMap<String, Any?>()
+        map["pageSize"] = Constants.PageSize
+        map["pageNo"] = page
+        return ApiObservable<PageResult<Favorite>>().observable(
+            checkSuccess(mApiService.favList(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = PageResult()
+                }
+                return@map t.data
+            })
+    }
+
+    fun favCheck(favoriteId: Int): ApiObservable<Boolean> {
+        val map = TreeMap<String, Any?>()
+        map["favoriteId"] = favoriteId
+        return ApiObservable<Boolean>().observable(
+            checkSuccess(mApiService.favCheck(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = false
+                }
+                return@map t.data
+            })
+    }
+
+    fun favAdd(poetryId: Int): ApiObservable<Favorite> {
+        val map = TreeMap<String, Any?>()
+        map["poetryId"] = poetryId
+        return ApiObservable<Favorite>().observable(
+            checkSuccess(mApiService.favAdd(buildJsonParams(map))).map { t ->
+                if (t.data == null) {
+                    t.data = Favorite()
+                }
+                return@map t.data
+            })
+    }
+
+    fun favDelete(poetryId: Int): ApiObservable<Any> {
+        val map = TreeMap<String, Any?>()
+        map["poetryId"] = poetryId
+        return ApiObservable<Any>().observable(
+            checkSuccess(mApiService.favDelete(buildJsonParams(map))).map {
+                return@map true
             })
     }
 }
