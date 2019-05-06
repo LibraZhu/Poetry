@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
         <TextView
@@ -19,54 +21,136 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:padding="16dp">
 
             <TextView
                     style="@style/TextStyle.Gray"
-                    android:layout_width="0dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
                     android:text="@string/read_setting_light"
                     android:textSize="@dimen/textSizeSmall"/>
+
+            <android.support.v7.widget.AppCompatSeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekbar"
+                    android:layout_weight="1.0"
+                    android:max="100"
+                    android:min="0"/>
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:id="@+id/fontLayout"
                 android:padding="16dp">
 
             <TextView
                     style="@style/TextStyle.Gray"
-                    android:layout_width="0dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
                     android:text="@string/read_setting_textStyle"
                     android:textSize="@dimen/textSizeSmall"/>
-        </LinearLayout>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp">
 
             <TextView
                     style="@style/TextStyle.Gray"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/ic_arrow_right"
+                    android:gravity="right"
+                    android:id="@+id/font"
                     android:layout_weight="1.0"
+                    android:textSize="@dimen/textSizeSmall"
+                    tools:text="系统默认(简)"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+            <TextView
+                    style="@style/TextStyle.Gray"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/read_setting_textSize"
                     android:textSize="@dimen/textSizeSmall"/>
+
+            <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"/>
+
+            <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_radiogroup"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:layout_width="56dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/select_radiobutton_left"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:id="@+id/small"
+                        android:text="@string/small"
+                        android:textColor="@color/color_radiobutton"
+                        android:textSize="@dimen/textSizeSmall"/>
+
+                <RadioButton
+                        android:layout_width="56dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/select_radiobutton_center"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:id="@+id/mid"
+                        android:text="@string/mid"
+                        android:textColor="@color/color_radiobutton"
+                        android:textSize="@dimen/textSizeSmall"/>
+
+                <RadioButton
+                        android:layout_width="56dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/select_radiobutton_right"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:id="@+id/large"
+                        android:text="@string/large"
+                        android:textColor="@color/color_radiobutton"
+                        android:textSize="@dimen/textSizeSmall"/>
+            </RadioGroup>
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:id="@+id/bgLayout"
                 android:padding="16dp">
+
+            <TextView
+                    style="@style/TextStyle.Gray"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/read_setting_bg"
+                    android:textSize="@dimen/textSizeSmall"/>
 
             <TextView
                     style="@style/TextStyle.Gray"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/ic_arrow_right"
+                    android:gravity="right"
+                    android:id="@+id/bg"
                     android:layout_weight="1.0"
-                    android:text="@string/read_setting_bg"
-                    android:textSize="@dimen/textSizeSmall"/>
+                    android:textSize="@dimen/textSizeSmall"
+                    tools:text="系统默认(简)"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

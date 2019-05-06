@@ -11,6 +11,7 @@ import com.libra.frame.api.data.Poetry
 import com.libra.frame.utils.StatusBarLight
 import com.libra.poetry.R
 import com.libra.poetry.poetry.xmlmodel.PoetryInfoXmlModel
+import com.libra.poetry.widget.PoetryBottomMenuDialog
 import com.libra.utils.startActivity
 import com.libra.utils.toast
 import io.reactivex.functions.Consumer
@@ -95,7 +96,7 @@ class PoetryInfoActivity : BaseBindingActivity<com.libra.poetry.databinding.Acti
         addObservable(
             Api.getInstance().commentList(1, poetry?.id ?: 0)
                 .success(Consumer {
-                    xmlModel.commentSize.set(it.totalRows?:0)
+                    xmlModel.commentSize.set(it.totalRows ?: 0)
                 })
                 .error(Consumer {
 
@@ -125,7 +126,7 @@ class PoetryInfoActivity : BaseBindingActivity<com.libra.poetry.databinding.Acti
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == Menu.FIRST + 1) {
-
+            PoetryBottomMenuDialog().show(supportFragmentManager, "dialog")
         }
         return super.onOptionsItemSelected(item)
     }

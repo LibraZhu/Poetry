@@ -32,4 +32,7 @@
     <string name="read_setting_textStyle">字体样式</string>
     <string name="read_setting_textSize">字体大小</string>
     <string name="read_setting_bg">阅读背景</string>
+    <string name="small">小</string>
+    <string name="mid">中</string>
+    <string name="large">大</string>
 </resources>
